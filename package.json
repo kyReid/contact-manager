@@ -1,5 +1,5 @@
 {
-  "name": "Contact Manager",
+  "name": "Contact-Manager",
   "version": "1.0.0",
   "description": "Simple Contact Manager",
   "main": "app.js",
@@ -7,11 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "The MEAN Team",
-  "license": "GPL",
+  "license": "GPL-3.0",
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "mongodb": "^3.1.12",
     "mongojs": "^2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kyReid/Contact-Manager.git"
   }
 }
