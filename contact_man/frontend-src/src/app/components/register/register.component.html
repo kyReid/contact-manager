@@ -1,0 +1,11 @@
+<body class="text-center card">
+ <form class="form-register" (submit)="onRegisterSubmit()">
+   <h1 class="h3 mb-3 font-weight-normal">Welcome!</h1>
+   <p>Great choice! Now you will be able to use our state-of-the-art web application to manage your contacts. If you already have an account, <a routerLink='/login'>click here to sign in</a>!</p>
+   <label for="inputUser" class="sr-only">Username</label>
+   <input type="username" [(ngModel)]="username" name="username" class="form-control" placeholder="Username" required autofocus>
+   <label for="inputPassword" class="sr-only">Password</label>
+   <input type="password" [(ngModel)]="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+   <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+</form>
+</body>

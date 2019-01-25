@@ -1,0 +1,11 @@
+<body class="text-center card">
+ <form class="form-signin" (submit)="onLoginSubmit()">
+   <h1 class="h3 mb-3 font-weight-normal">Welcome back!</h1>
+   <p>You will be able to access your contacts once you sign in. If you do not have an account, <a routerLink='/register'>register now</a> to join!</p>
+   <label for="inputUser" class="sr-only">Username</label>
+   <input type="username" [(ngModel)]="username" name="username" class="form-control" placeholder="Username" required autofocus>
+   <label for="inputPassword" class="sr-only">Password</label>
+   <input type="password" [(ngModel)]="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+</body>

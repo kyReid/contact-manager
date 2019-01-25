@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<a class="navbar-brand" routerLink='/'>Contact Manager</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+<ul class="navbar-nav mr-auto navbar-left nav-item"></ul>
+<ul class="navbar-nav navbar-right">
+  <li routerLinkActive="active" class="nav-item">
+    <a class="nav-link" routerLink='/login'>Login</a>
+  </li>
+  <li routerLinkActive="active" class="nav-item">
+    <a class="nav-link" routerLink='/register'>Register</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+  </li>
+  <li routerLinkActive="active" class="nav-item">
+    <a class="nav-link" routerLink='/about'>About</a>
+  </li>
+</ul>
+</div>
+</nav>
+<br>
