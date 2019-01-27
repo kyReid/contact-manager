@@ -7,14 +7,20 @@
 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 <ul class="navbar-nav mr-auto navbar-left nav-item"></ul>
 <ul class="navbar-nav navbar-right">
-  <li routerLinkActive="active" class="nav-item">
-    <a class="nav-link" routerLink='/login' *ngIf="!(isLoggedIn$ | async) as isLoggedIn">Login</a>
+  <li routerLinkActive="active" class="nav-item" *ngIf="!authService.isLoggedIn()">
+    <a class="nav-link" routerLink='/login'>Login</a>
   </li>
-  <li routerLinkActive="active" class="nav-item">
-    <a class="nav-link" routerLink='/register' *ngIf="!(isLoggedIn$ | async) as isLoggedIn">Register</a>
+  <li routerLinkActive="active" class="nav-item" *ngIf="!authService.isLoggedIn()">
+    <a class="nav-link" routerLink='/register'>Register</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" (click)="onLogoutClick()" *ngIf="isLoggedIn$ | async" href="#">Logout</a>
+  <li routerLinkActive="active" class="nav-item" *ngIf="authService.isLoggedIn()">
+    <a class="nav-link" routerLink='/contacts'>My Contacts</a>
+  </li>
+  <li routerLinkActive="active" class="nav-item" *ngIf="authService.isLoggedIn()">
+    <a class="nav-link" routerLink='/contacts/create'>New Contact</a>
+  </li>
+  <li routerLinkActive="active" class="nav-item" *ngIf="authService.isLoggedIn()">
+    <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
   </li>
   <li routerLinkActive="active" class="nav-item">
     <a class="nav-link" routerLink='/about'>About</a>

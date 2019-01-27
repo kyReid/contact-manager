@@ -1,21 +1,34 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Injectable } from '@angular/core';
+import { User, Contact } from '../entities';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
   authToken: any;
-  user: any;
+  user: User;
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
+  isLoggedIn() {
+    let jwtHelper = new JwtHelperService();
+    if (localStorage.id_token == undefined)
+      return false;
+    return !jwtHelper.isTokenExpired(localStorage.id_token);
   }
 
-  constructor (private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.authToken = localStorage.getItem('id_token');
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }
+
+  getContacts() {
+    let headers = new HttpHeaders();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post<Array<Contact>>('http://localhost:3000/users/contacts', { headers: headers });
+  }
 
   registerUser(user) {
     let headers = new HttpHeaders();
@@ -37,10 +50,7 @@ export class AuthService {
       success: boolean;
       msg: string;
       token: string;
-      user: {
-        id: string;
-        username: string;
-      }
+      user: User;
     }
 
     return this.http.post<AuthenticationResponse>('http://localhost:3000/users/authenticate', user, { headers: headers });
@@ -49,13 +59,11 @@ export class AuthService {
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
-    this.loggedIn.next(true);
     this.authToken = token;
     this.user = user;
   }
 
   logout() {
-    this.loggedIn.next(false);
     this.authToken = null;
     this.user = null;
     localStorage.clear();

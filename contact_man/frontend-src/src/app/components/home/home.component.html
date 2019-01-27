@@ -4,11 +4,17 @@
     <h2>Contact Manager</h2>
 
     <p class="lead">Keep track of all your contacts with our state of the art contact manager</p>
+    <button type="button" routerLink="/contacts"
+            *ngIf="authService.isLoggedIn()"
+            class="btn btn-secondary btn-lg btn-block">My Contacts</button>
+    <button type="button" routerLink="/contacts/create"
+            *ngIf="authService.isLoggedIn()"
+            class="btn btn-secondary btn-lg btn-block">Create a Contact</button>
       <div class="btn-group mr-2">
-        <button type="button" routerLink="/register" class="btn btn-primary btn-lg">Register</button>
+        <button type="button" routerLink="/register" *ngIf="!authService.isLoggedIn()" class="btn btn-primary btn-lg">Register</button>
       </div>
       <div class="btn-group mr-2">
-        <button type="button" routerLink="/login" class="btn btn-secondary btn-lg">Login</button>
+        <button type="button" routerLink="/login" *ngIf="!authService.isLoggedIn()" class="btn btn-secondary btn-lg">Login</button>
       </div>
     </div>
 </section>

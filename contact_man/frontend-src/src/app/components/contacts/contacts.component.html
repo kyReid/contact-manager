@@ -1,3 +1,6 @@
-<p>
-  contacts works!
-</p>
+<h2>My Contacts</h2>
+<ul class="mock_user.contacts">
+  <li *ngFor="let contact of mock_user.contacts">
+    <span class="badge">{{contact.mobile_phone}}</span> {{contact.firstname}}
+  </li>
+</ul>

@@ -1,10 +1,8 @@
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 // Services
 import { AuthService } from '../../services/auth.service';
-import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
@@ -13,15 +11,12 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
 
   constructor(private router: Router,
-              private authService: AuthService,
-              private flashMessage: FlashMessagesService) { }
+    private authService: AuthService,
+    private flashMessage: FlashMessagesService) { }
 
-  ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
-  }
+  ngOnInit() { }
 
   onLogoutClick() {
     this.authService.logout();
