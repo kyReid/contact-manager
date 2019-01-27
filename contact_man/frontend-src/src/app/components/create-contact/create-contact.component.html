@@ -1,3 +1,27 @@
-<p>
-  create-contact works!
-</p>
+<body class="text-center card">
+    <!-- contact information -->
+<form class="form-createcontact" (submit)="onCreateContactSubmit()">
+
+  <h1 class="h3 mb-3 font-weight-normal">New Contact!</h1>
+  <p>Fill out details for this new contact. You can fill in as many, or as little, as you would like but at least one field is neccessary</p>
+
+  <label for="fname" class="sr-only">First name</label>
+  <input class="form-control" [(ngModel)]="newContact.firstname" type="text" id="fname" name="firstname" placeholder="First name">
+
+  <label for="lname" class="sr-only">Last name</label>
+  <input class="form-control" [(ngModel)]="newContact.lastname" type="text" id="lname" name="lastname" placeholder="Last name">
+
+  <label for="email" class="sr-only">Email</label>
+  <input class="form-control" [(ngModel)]="newContact.email" type="text" id="email" name="email" placeholder="Email">
+
+  <label for="mobilephone" class="sr-only">Mobile Phone</label>
+  <input class="form-control" [(ngModel)]="newContact.mobile_phone" type="text" id="Mphone" name="mobile phone" placeholder="Mobile phone">
+
+  <label for="homePhone" class="sr-only">Home Phone</label>
+  <input class="form-control" [(ngModel)]="newContact.home_phone" type="text" id="Hphone" name="home number" placeholder="Home phone">
+
+  <label for="address" class="sr-only">Address</label>
+  <input class="form-control" [(ngModel)]="newContact.address" type="text" id="addy" name="address" placeholder="Address">
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Create Contact</button>
+</form>
+</body>
