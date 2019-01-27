@@ -13,6 +13,23 @@ router.post('/register', (req, res, next) => {
     contacts: req.body.contacts
   });
 
+  User.getUserByUsername(req.body.username, (err, user) => {
+    if (err) throw err;
+    if (user) {
+      res.json({ success: false, msg: "User already exists."});
+    } else {
+      User.addUser(newUser, (err, user) => {
+        if (err) {
+          res.json({ success: false, msg: "Failed to register user" });
+          console.log("Failed to register user: " + err);
+        } else {
+          res.json({ success: true, msg: "User registered" });
+        }
+      });
+    }
+  });
+
+/*
   User.addUser(newUser, (err, user) => {
     if (err) {
       res.json({ success: false, msg: "Failed to register user" });
@@ -21,6 +38,7 @@ router.post('/register', (req, res, next) => {
       res.json({ success: true, msg: "User registered" });
     }
   });
+*/
 });
 
 // Authenticate

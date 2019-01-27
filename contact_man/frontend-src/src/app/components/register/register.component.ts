@@ -33,14 +33,13 @@ export class RegisterComponent implements OnInit {
       this.flashMessage.show("Please fill out all fields",  { cssClass: 'alert-danger' } );
       return false;
     }
-    this.flashMessage.show("Success! Registering account..",  { cssClass: 'alert-success' } );
 
     this.authService.registerUser(user).subscribe((data) => {
       if (data.success) {
         this.flashMessage.show("You are registered and can log in",  { cssClass: 'alert-success' } );
         this.router.navigate(['/login']);
       } else {
-        this.flashMessage.show("you were not able to be registed something fucked up",  { cssClass: 'alert-danger' } );
+        this.flashMessage.show(data.msg,  { cssClass: 'alert-danger' } );
         this.router.navigate(['/register']);
       }
     });
