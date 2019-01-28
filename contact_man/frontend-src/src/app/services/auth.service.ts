@@ -27,7 +27,7 @@ export class AuthService {
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post<Array<Contact>>('http://localhost:3000/users/contacts', { headers: headers });
+    return this.http.get<Contact[]>('http://localhost:3000/users/contacts', { headers: headers });
   }
 
   registerUser(user) {

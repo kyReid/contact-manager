@@ -40,9 +40,22 @@ module.exports.addUser = function(newUser, callback) {
   });
 }
 
+// Compare candidatePassword with passowrd
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     if (err) throw err;
     callback(null, isMatch);
   });
 }
+
+// Add contact newContact to user by id
+module.exports.addContact = function(id, newContact, callback) {
+  User.findByIdAndUpdate(id,
+     { $push: { "contacts": newContact } },
+     { new: true },
+     (err, model) => {
+       if (err) throw err;
+       callback(err, model);
+     }
+  );
+};

@@ -74,8 +74,19 @@ router.post('/authenticate', (req, res, next) => {
   });
 });
 
+// Return JSON-serialized contact list
 router.get('/contacts', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-  res.send("ALL CONTACTS HERE");
+  res.json(req.user.contacts);
+});
+
+// Create new contact and add to db
+router.put('/contacts/create', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+  const userId = req.user._id;
+  const newContact = req.body;
+
+  User.addContact(userId, newContact, (model) => {
+    res.json({ oldUser: req.user, newUser: model });
+  });
 });
 
 module.exports = router;
