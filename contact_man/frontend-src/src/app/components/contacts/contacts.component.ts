@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../entities';
-import { MOCK_USER } from '../../mock_ent'
+import { User, Contact } from '../../entities';
+import { MOCK_USER } from '../../mock_ent';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-contacts',
@@ -9,10 +10,18 @@ import { MOCK_USER } from '../../mock_ent'
 })
 export class ContactsComponent implements OnInit {
   mock_user: User = MOCK_USER;
+  contacts: Contact[];
 
-  constructor() { }
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
+    this.authService.getContacts().subscribe(contacts => {
+      this.contacts = contacts;
+    }, err => {
+      console.log(err);
+      return false;
+    });
   }
 
 }
