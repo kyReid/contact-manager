@@ -1,6 +1,38 @@
 <h2>My Contacts</h2>
-<ul class="mock_user.contacts">
-  <li *ngFor="let contact of mock_user.contacts">
-    <span class="badge">{{contact.mobile_phone}}</span> {{contact.firstname}}
-  </li>
-</ul>
+<table id="contactTable" border="1">
+ <tr>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Email</th>
+  <th>Mobile Phone</th>
+  <th>Home Phone</th>
+  <th>Address</th>
+  <th>Edit</th>
+</tr>
+<tr style="color:white" *ngFor="let contact of mock_user.contacts">
+<th>{{contact.firstname}}</th>
+<th>{{contact.lastname}}</th>
+<th>{{contact.email}}</th>
+<th>{{contact.mobile_phone}}</th>
+<th>{{contact.home_phone}}</th>
+<th>{{contact.address}}</th>
+<th type="button" style="color:black"><a routerLink="/create-contact">Edit</a></th>
+</tr>
+</table>
+<!-- <table style="color:rgb(255, 255, 255)" *ngFor="let contact of mock_user.contacts">
+    {{contact.mobile_phone}} {{contact.firstname}}
+</table>  -->
+<!-- <tr *ngFor="Let contact of mock_user.contacts"> -->
+  <!-- {{contact.modible_phone}} {{contact.firstname}}
+</tr> -->
+
+
+<!-- <table id="contactList" class="mock_user.contacts">
+  <thread>
+    <tr>
+      <th>Edit</th>
+      <th>mobile phone</th>
+      <th>Name</th>      
+    </tr>
+  </thread>
+</table> -->
