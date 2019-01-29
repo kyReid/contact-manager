@@ -64,6 +64,21 @@ export class AuthService {
     this.user = user;
   }
 
+  createContact(newContact) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.authToken
+    });
+
+    interface CreateContactResponse {
+      success: boolean;
+      msg?: string;
+      user?: User;
+    }
+
+    return this.http.put<CreateContactResponse>('http://localhost:3000/users/contacts/create', newContact, { headers: headers });
+  }
+
   logout() {
     this.authToken = null;
     this.user = null;

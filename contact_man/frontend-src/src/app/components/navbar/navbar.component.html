@@ -17,7 +17,7 @@
     <a class="nav-link" routerLink='/contacts'>My Contacts</a>
   </li>
   <li routerLinkActive="active" class="nav-item" *ngIf="authService.isLoggedIn()">
-    <a class="nav-link" routerLink='/contacts/create'>New Contact</a>
+    <a class="nav-link" routerLink='/create-contact'>New Contact</a>
   </li>
   <li routerLinkActive="active" class="nav-item" *ngIf="authService.isLoggedIn()">
     <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
