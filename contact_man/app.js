@@ -45,6 +45,10 @@ app.get('/', (req, res) => {
   res.send("invalid endpoint")
 });
 
+// Serve files from 'ng build' aka frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 // Starts server
 app.listen(port, () => {
