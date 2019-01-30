@@ -91,4 +91,18 @@ router.put('/contacts/create', passport.authenticate('jwt', { session: false }),
   });
 });
 
+// Delete contact from db under authenticated user
+router.delete('/contacts/delete/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+  const userId = req.user._id;
+  const contactId = req.params.id;
+
+  if (!contactId.match(/^[0-9a-fA-F]{24}$/))
+    return res.json({ success: false, msg: "Malformed object id"});
+
+  User.deleteContact(userId, contactId, (err, user) => {
+    if (err) return res.json({ success: false, msg: err });
+    res.json({ success: true, user: user})
+  });
+});
+
 module.exports = router;

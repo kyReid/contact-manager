@@ -79,6 +79,17 @@ export class AuthService {
     return this.http.put<CreateContactResponse>('http://68.183.16.123:3000/users/contacts/create', newContact, { headers: headers });
   }
 
+  deleteContact(contact) {
+
+    interface DeleteContactResponse {
+      success: boolean;
+      msg?: string;
+      user?: User;
+    }
+    // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
+    return this.http.delete<DeleteContactResponse>('http://68.183.16.123:3000/users/contacts/delete/' + contact, { headers: { 'Content-Type': 'application/json', 'Authorization': this.authToken } });
+  }
+
   logout() {
     this.authToken = null;
     this.user = null;

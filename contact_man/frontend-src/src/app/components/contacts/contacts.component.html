@@ -8,7 +8,7 @@
   <th>Mobile Phone</th>
   <th>Home Phone</th>
   <th>Address</th>
-  <th>Edit</th>
+  <th>Action</th>
 </tr>
 <tr style="color:white" *ngFor="let contact of contacts | contacts: searchText">
 <th>{{contact.firstname}}</th>
@@ -17,7 +17,7 @@
 <th>{{contact.mobile_phone}}</th>
 <th>{{contact.home_phone}}</th>
 <th>{{contact.address}}</th>
-<th type="button" style="color:black"><a routerLink="/create-contact">Edit</a></th>
+<th type="button" style="color:black" (click)="onDeleteContactSubmit(contact)">Delete</th>
 </tr>
 </table>
 <!-- <table style="color:rgb(255, 255, 255)" *ngFor="let contact of mock_user.contacts">

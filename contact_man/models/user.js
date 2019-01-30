@@ -59,3 +59,15 @@ module.exports.addContact = function(id, newContact, callback) {
      }
   );
 };
+
+// Delete contact contactId on user by userId
+module.exports.deleteContact = function(userId, contactId, callback) {
+  User.findByIdAndUpdate(userId,
+     { $pull: { "contacts": { _id: contactId } } },
+     { new: true },
+     (err, model) => {
+       if (err) throw err;
+       callback(err, model);
+     }
+  );
+};
