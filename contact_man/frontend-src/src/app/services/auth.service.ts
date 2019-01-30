@@ -27,8 +27,8 @@ export class AuthService {
       'Content-Type': 'application/json',
       'Authorization': this.authToken
     });
-
-    return this.http.get<Contact[]>('http://localhost:3000/users/contacts', { headers: headers });
+    // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
+    return this.http.get<Contact[]>('http://68.183.16.123:3000/users/contacts', { headers: headers });
   }
 
   registerUser(user) {
@@ -39,8 +39,8 @@ export class AuthService {
       success: boolean;
       msg: string;
     }
-
-    return this.http.post<RegisterResponse>('http://localhost:3000/users/register', user, { headers: headers });
+    // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
+    return this.http.post<RegisterResponse>('http://68.183.16.123:3000/users/register', user, { headers: headers });
   }
 
   authenticateUser(user) {
@@ -53,8 +53,8 @@ export class AuthService {
       token: string;
       user: User;
     }
-
-    return this.http.post<AuthenticationResponse>('http://localhost:3000/users/authenticate', user, { headers: headers });
+    // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
+    return this.http.post<AuthenticationResponse>('http://68.183.16.123:3000/users/authenticate', user, { headers: headers });
   }
 
   storeUserData(token, user) {
@@ -75,8 +75,8 @@ export class AuthService {
       msg?: string;
       user?: User;
     }
-
-    return this.http.put<CreateContactResponse>('http://localhost:3000/users/contacts/create', newContact, { headers: headers });
+    // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
+    return this.http.put<CreateContactResponse>('http://68.183.16.123:3000/users/contacts/create', newContact, { headers: headers });
   }
 
   logout() {
