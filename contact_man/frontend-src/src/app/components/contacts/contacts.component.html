@@ -1,4 +1,5 @@
 <h2>My Contacts</h2>
+<input class="form-control" [(ngModel)]="searchText" type="text" id="search" name="searchText" placeholder="Search..">
 <table id="contactTable" border="1">
  <tr>
   <th>First Name</th>
@@ -9,7 +10,7 @@
   <th>Address</th>
   <th>Edit</th>
 </tr>
-<tr style="color:white" *ngFor="let contact of contacts">
+<tr style="color:white" *ngFor="let contact of contacts | contacts: searchText">
 <th>{{contact.firstname}}</th>
 <th>{{contact.lastname}}</th>
 <th>{{contact.email}}</th>

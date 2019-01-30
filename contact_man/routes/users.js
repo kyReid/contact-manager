@@ -84,8 +84,10 @@ router.put('/contacts/create', passport.authenticate('jwt', { session: false }),
   const userId = req.user._id;
   const newContact = req.body;
 
-  User.addContact(userId, newContact, (model) => {
-    res.json({ oldUser: req.user, newUser: model });
+  User.addContact(userId, newContact, (err, model) => {
+    if (err) return res.json({ success: false, msg: err});
+
+    res.json({ success: true, user: model });
   });
 });
 

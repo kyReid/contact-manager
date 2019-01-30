@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateContactComponent } from './components/create-contact/create-contact.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { ContactsPipe } from './components/contacts/contacts.pipe'
 import { AboutComponent } from './components/about/about.component';
 
 // Services
@@ -29,6 +30,7 @@ import { AuthService } from './services/auth.service';
     HomeComponent,
     CreateContactComponent,
     ContactsComponent,
+    ContactsPipe,
     AboutComponent
   ],
   imports: [

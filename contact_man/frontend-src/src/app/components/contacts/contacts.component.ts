@@ -10,7 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ContactsComponent implements OnInit {
   mock_user: User = MOCK_USER;
-  contacts: Contact[];
+  public contacts: Contact[];
+  public searchText: string;
 
   constructor(private authService: AuthService) {
   }

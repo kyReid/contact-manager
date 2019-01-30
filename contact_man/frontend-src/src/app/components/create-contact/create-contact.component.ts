@@ -35,7 +35,7 @@ export class CreateContactComponent implements OnInit {
       email: this.email,
       mobile_phone: this.mobile_phone,
       home_phone: this.home_phone,
-      address: this.address,
+      address: this.address
     }
 
     this.authService.createContact(newContact).subscribe((data) => {
