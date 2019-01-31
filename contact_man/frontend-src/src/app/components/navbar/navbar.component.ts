@@ -11,7 +11,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  public isCollapsed = false;
+  
   constructor(private router: Router,
     private authService: AuthService,
     private flashMessage: FlashMessagesService) { }

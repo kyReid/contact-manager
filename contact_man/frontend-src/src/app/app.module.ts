@@ -5,6 +5,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 
 // Components
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { AuthService } from './services/auth.service';
     CreateContactComponent,
     ContactsComponent,
     ContactsPipe,
+    NgbCollapse,
     AboutComponent
   ],
   imports: [

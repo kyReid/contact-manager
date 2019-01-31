@@ -28,7 +28,7 @@ export class AuthService {
       'Authorization': this.authToken
     });
     // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
-    return this.http.get<Contact[]>('http://68.183.16.123:3000/users/contacts', { headers: headers });
+    return this.http.get<Contact[]>('/users/contacts', { headers: headers });
   }
 
   registerUser(user) {
@@ -40,7 +40,7 @@ export class AuthService {
       msg: string;
     }
     // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
-    return this.http.post<RegisterResponse>('http://68.183.16.123:3000/users/register', user, { headers: headers });
+    return this.http.post<RegisterResponse>('/users/register', user, { headers: headers });
   }
 
   authenticateUser(user) {
@@ -54,7 +54,7 @@ export class AuthService {
       user: User;
     }
     // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
-    return this.http.post<AuthenticationResponse>('http://68.183.16.123:3000/users/authenticate', user, { headers: headers });
+    return this.http.post<AuthenticationResponse>('/users/authenticate', user, { headers: headers });
   }
 
   storeUserData(token, user) {
@@ -76,7 +76,7 @@ export class AuthService {
       user?: User;
     }
     // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
-    return this.http.put<CreateContactResponse>('http://68.183.16.123:3000/users/contacts/create', newContact, { headers: headers });
+    return this.http.put<CreateContactResponse>('/users/contacts/create', newContact, { headers: headers });
   }
 
   deleteContact(contact) {
@@ -87,7 +87,7 @@ export class AuthService {
       user?: User;
     }
     // CHANGE IP ADDRESS TO LOCALHOST WHEN DEVELOPING LOCALLY
-    return this.http.delete<DeleteContactResponse>('http://68.183.16.123:3000/users/contacts/delete/' + contact, { headers: { 'Content-Type': 'application/json', 'Authorization': this.authToken } });
+    return this.http.delete<DeleteContactResponse>('/users/contacts/delete/' + contact, { headers: { 'Content-Type': 'application/json', 'Authorization': this.authToken } });
   }
 
   logout() {
