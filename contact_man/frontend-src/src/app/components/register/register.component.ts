@@ -29,6 +29,14 @@ export class RegisterComponent implements OnInit {
       password: this.password
     }
 
+    for (let key in user) {
+      let value = user[key];
+      if (!this.validateService.validateString(value)) {
+        this.flashMessage.show("The " + key + " field is too long!", { cssClass: 'alert-danger' });
+        return false;
+      }
+    }
+
     if (!this.validateService.validateRegisterFields(user)) {
       this.flashMessage.show("Please fill out all fields",  { cssClass: 'alert-danger' } );
       return false;

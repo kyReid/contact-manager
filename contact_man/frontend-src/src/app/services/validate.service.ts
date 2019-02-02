@@ -14,4 +14,9 @@ export class ValidateService {
   validateLoginFields (user) {
     return !(user.username == undefined || user.password == undefined);
   }
+
+  validateString(str)
+  {
+    return str.length < 256;
+  }
 }

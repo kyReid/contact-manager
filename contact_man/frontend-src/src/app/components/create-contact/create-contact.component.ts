@@ -38,6 +38,15 @@ export class CreateContactComponent implements OnInit {
       address: this.address
     }
 
+    for (let key in newContact) {
+      let value = newContact[key];
+      if (!this.validateService.validateString(value)) {
+        this.flashMessage.show("The " + key + " field is too long!", { cssClass: 'alert-danger' });
+        this.router.navigate(['/create-contact']);
+        return false;
+      }
+    }
+
     this.authService.createContact(newContact).subscribe((data) => {
       if (data.success) {
         this.authService.user = data.user;
