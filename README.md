@@ -2,7 +2,7 @@
 Processes for Object-Oriented Software Development - small group project 
 
 Web application for storing and organizing contacts.
-Users can register a new account or login into their account
+Users can register a new account or login to their account
 to view their personal contacts.
 
 ## Contributors
